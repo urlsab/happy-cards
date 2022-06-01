@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 // import Icon from '@material-ui/core/Icon';
 // import SendIcon from '@material-ui/icons/Send';
 
+// should be in a seperate file
 const formReducer = (state, event) => {
 
   if(event.reset) {
@@ -25,17 +26,21 @@ const App = () => {
   const [formData, setFormData] = useReducer(formReducer, {});
   const [submitting, setSubmitting] = useState(false);
 
+  // should be in a seperate file
   const handleSubmit = event => {
     event.preventDefault();
     setSubmitting(true);
   }
 
+  // should be in a seperate file
   const handleChange = event => {
     setFormData({
       name: event.target.name,
       value: event.target.value
     })
   }
+
+  // every labal section should be component
 
   return(
     <div className="wrapper">
@@ -46,10 +51,12 @@ const App = () => {
 
           <label>
             <p>Name <input  placeholder="your first name" name="name" onChange={handleChange} value={formData.name || ''}/></p>
-            
-            <p>Last Name <input placeholder="your last name" name="lastName" onChange={handleChange} value={formData.lastName || ''}/></p>
-            
           </label>
+
+          <label>
+            <p>Last Name <input placeholder="your last name" name="lastName" onChange={handleChange} value={formData.lastName || ''}/></p>
+          </label>
+          
         
          <label>
            <p>Your age <input placeholder="0" type="number" name="age" min="0" max="120" onChange={handleChange} step="1" value={formData.age || ''}/></p>
@@ -69,12 +76,14 @@ const App = () => {
 
        </fieldset>
 
+      {/* component */}
         <div className="buttonWrraper">
           <Button variant="contained"  size="small" color="secondary" type="submit" disabled={submitting}  >Submit</Button>
         </div>
         
       </form>
 
+      {/*  the modal */}
       {submitting && 
        <div>
           
